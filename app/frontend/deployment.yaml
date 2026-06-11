@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/mirwanasikin/flask-registry-mahasiswa-frontend:latest
+          image: ghcr.io/mirwanasikin/flask-registry-app-frontend:latest
           ports:
             - containerPort: 80
