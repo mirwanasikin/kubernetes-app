@@ -1,0 +1,3 @@
+# Ignore Secret
+**/secret.yaml
+**/secrets.yaml

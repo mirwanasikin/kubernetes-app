@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: registry-mahasiswa
+data:
+  DB_HOST: postgres-svc
+  DB_PORT: "5432"
+  DB_NAME: mahasiswa

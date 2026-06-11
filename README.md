@@ -1,0 +1,1 @@
+# Kubernetes Student Registry App
