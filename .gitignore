@@ -1,3 +1,4 @@
 # Ignore Secret
 **/secret.yaml
 **/secrets.yaml
+pub-cert.pem
