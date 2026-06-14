@@ -5,6 +5,7 @@ metadata:
   namespace: registry-mahasiswa
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: registry-mahasiswa-strip-api@kubernetescrd
 spec:
   rules:
     - http:
