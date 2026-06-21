@@ -11,9 +11,14 @@
 
 **GitOps manifests for a full-stack student registry app, deployed on a self-managed k3s cluster on AWS EC2.**
 
-[Infrastructure Repo](https://github.com/mirwanasikin/aws-ec2-server) · [App Source Repo](https://github.com/mirwanasikin/flask-registry-app)
+[Infrastructure Repo](https://gitlab.com/mirwanasikin-productions/aws-ec2-server.git) · [App Source Repo](https://gitlab.com/mirwanasikin-productions/flask-registry-app)
 
 </div>
+
+---
+
+> [!IMPORTANT]
+> If you found this repository through my github, keep in mind this is just mirror repository. The main repository is on my [Gitlab](https://gitlab.com/mirwanasikin-productions/kubernetes-app). I'm also going to move my main repository to Gitlab since I'm moving to Gitlab CI now. So if you want to contribute please go to my Gitlab instead.
 
 ---
 
@@ -23,13 +28,13 @@ This project is part of a 3-repository GitOps system:
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│                        GitHub                                │
+│                        Gitlab                                │
 │                                                              │
-│  ┌─────────────────┐      ┌──────────────────────────────┐  │
-│  │ flask-registry- │ push │     kubernetes-app           │  │
-│  │ app             │─────▶│  (this repo — GitOps source) │  │
-│  │ (app source +   │image │                              │  │
-│  │  CI pipeline)   │      └──────────────┬───────────────┘  │
+│  ┌─────────────────┐      ┌──────────────────────────────┐   │
+│  │ flask-registry- │ push │     kubernetes-app           │   │
+│  │ app             │─────▶│  (this repo — GitOps source) │   │
+│  │ (app source +   │image │                              │   │
+│  │  CI pipeline)   │      └──────────────┬───────────────┘   │
 │  └─────────────────┘                     │ ArgoCD polls      │
 │                                          │                   │
 │  ┌─────────────────┐                     │                   │
@@ -43,23 +48,23 @@ This project is part of a 3-repository GitOps system:
 ┌─────────────────────────────────────────────────────────────┐
 │                     AWS EC2 (k3s Cluster)                   │
 │                                                             │
-│  Control Plane ──┬── Worker Node 1 ──┬── Worker Node 2     │
+│  Control Plane ──┬── Worker Node 1 ──┬── Worker Node 2      │
 │                  │                   │                      │
-│             ┌────▼───────────────────▼────┐                │
+│             ┌────▼───────────────────▼─────┐                │
 │             │   Namespace: registry-       │                │
 │             │   mahasiswa                  │                │
 │             │                              │                │
-│             │  ┌─────────┐  ┌──────────┐  │                │
-│             │  │ Nginx   │  │  Flask   │  │                │
-│             │  │Frontend │─▶│ Backend  │  │                │
-│             │  └────┬────┘  └────┬─────┘  │                │
+│             │  ┌─────────┐  ┌──────────┐   │                │
+│             │  │ Nginx   │  │  Flask   │   │                │
+│             │  │Frontend │─▶│ Backend  │   │                │
+│             │  └────┬────┘  └────┬─────┘   │                │
 │             │       │            │         │                │
-│             │  ┌────▼────────────▼─────┐  │                │
+│             │  ┌────▼────────────▼─────┐   │                │
 │             │  │   PostgreSQL (StatefulSet)│                │
-│             │  └───────────────────────┘  │                │
-│             └─────────────────────────────┘                │
+│             │  └───────────────────────┘   │                │
+│             └──────────────────────────────┘                │
 │                                                             │
-│  ArgoCD (namespace: argocd) ◀── polls this repo            │
+│  ArgoCD (namespace: argocd) ◀── polls this repo             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -180,11 +185,11 @@ The encryption is tied to the specific Sealed Secrets controller instance in the
 
 ## 🔗 Related Repositories
 
-| Repository                                                               | Role                                                                    |
-| ------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| [aws-ec2-server](https://github.com/mirwanasikin/aws-ec2-server)         | Provisions the EC2 cluster with OpenTofu and configures it with Ansible |
-| [flask-registry-app](https://github.com/mirwanasikin/flask-registry-app) | Flask + Nginx app source code, CI pipeline pushes images to ghcr.io     |
-| **kubernetes-app** _(this repo)_                                         | GitOps manifests, ArgoCD reads from here                                |
+| Repository                                                                           | Role                                                                    |
+| ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| [aws-ec2-server](https://gitlab.com/mirwanasikin-productions/flask-registry-app.git) | Provisions the EC2 cluster with OpenTofu and configures it with Ansible |
+| [flask-registry-app](https://gitlab.com/mirwanasikin-productions/flask-registry-app) | Flask + Nginx app source code, CI pipeline pushes images to ghcr.io     |
+| **kubernetes-app** _(this repo)_                                                     | GitOps manifests, ArgoCD reads from here                                |
 
 ---
 
